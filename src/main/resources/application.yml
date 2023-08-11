@@ -1,0 +1,13 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+  datasource:
+    url: jdbc:postgresql://localhost:5455/warehouse_db
+    username: admin
+    password: 12345
+  security:
+    user:
+      name: admin
+      password: 12345
