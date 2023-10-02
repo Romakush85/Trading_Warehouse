@@ -1,4 +1,4 @@
-package ua.kushnir.petproject.contractor;
+package ua.kushnir.petproject.models.contractor;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -6,7 +6,8 @@ import lombok.Data;
 import java.util.UUID;
 
 @Data
-@MappedSuperclass
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Contractor {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

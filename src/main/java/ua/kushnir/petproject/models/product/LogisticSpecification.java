@@ -1,4 +1,4 @@
-package ua.kushnir.petproject.product;
+package ua.kushnir.petproject.models.product;
 
 import java.util.UUID;
 

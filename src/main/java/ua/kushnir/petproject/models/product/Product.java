@@ -1,14 +1,16 @@
-package ua.kushnir.petproject.product;
+package ua.kushnir.petproject.models.product;
 
 
 import jakarta.persistence.*;
+import ua.kushnir.petproject.models.supplier.Supplier;
+
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "products")
-public class ProductDAO {
+@Table(name = "product")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id", nullable = false)
@@ -23,6 +25,9 @@ public class ProductDAO {
     private BigDecimal salePrice;
     @Column(name = "category")
     private Category category;
+    @ManyToOne
+    @JoinColumn(name="supplier_id", referencedColumnName = "id")
+    private Supplier supplier;
 
 
 

@@ -1,4 +1,4 @@
-package ua.kushnir.petproject.contractor;
+package ua.kushnir.petproject.models.contractor;
 
 import jakarta.persistence.*;
 import lombok.Data;
@@ -8,7 +8,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Table(name="contracts")
+@Table(name="contract")
 public class Contract {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

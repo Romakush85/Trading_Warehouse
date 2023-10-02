@@ -1,4 +1,4 @@
-package ua.kushnir.petproject.orders;
+package ua.kushnir.petproject.models.order;
 
 public enum OrderType {
     PurchaseOrder, SaleOrder

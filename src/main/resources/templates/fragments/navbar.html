@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<nav th:fragment="navbar_auth" class="navbar-expand-md border-bottom">
+    <div class="text-center mt-0 collapse navbar-collapse">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link active" th:href="@{/warehouse}">Warehouse</a>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link" th:href="@{/deals}">Deals</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Contractors
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="/buyers">Buyers</a></li>
+                    <li><a class="dropdown-item" href="/suppliers">Suppliers</a></li>
+                </ul>
+            </li>
+            <li class="nav-item" >
+                <a class="nav-link active" th:href="@{/products/index}">Products</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" th:href="@{/}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Settings
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/settings/change">change password</a></li>
+                    <li><a class="dropdown-item" href="/logout">sign out</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+</body>
+
+</html>

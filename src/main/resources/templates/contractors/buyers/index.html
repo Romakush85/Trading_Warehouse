@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{layout.html}"
+      lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Buyers</title>
+</head>
+<body>
+    <section layout:fragment="content">
+        <div class="container" th:if="${#lists.isEmpty(buyers)}"
+             style="background:white; opacity: 0.7; overflow-y: auto">
+            <h3> You didn't create any buyer </h3>
+
+        </div>
+        <div class="container" th:if="${not #lists.isEmpty(buyers)}"
+             style="background:white; opacity: 0.7; overflow-y: auto">
+            <h3>Buyers:</h3>
+            <div th:each="buyer : ${buyers}">
+                <a th:href="@{/buyers/{id}(id=${buyer.getId()})}" th:text="${buyer.getName()}">buyer</a>
+            </div>
+        </div>
+        <form action="/buyers/create" method="GET">
+            <button type="submit" class="btn btn-primary">
+                Create buyer
+            </button>
+        </form>
+    </section>
+</body>
+</html>
