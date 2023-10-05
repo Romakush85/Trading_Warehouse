@@ -21,11 +21,13 @@
                 <a th:href="@{/buyers/{id}(id=${buyer.getId()})}" th:text="${buyer.getName()}">buyer</a>
             </div>
         </div>
-        <form action="/buyers/create" method="GET">
-            <button type="submit" class="btn btn-primary">
-                Create buyer
-            </button>
-        </form>
+        <div class="container">
+            <form action="/buyers/new" method="GET">
+                <button type="submit" class="btn btn-info">
+                    Create buyer
+                </button>
+            </form>
+        </div>
     </section>
 </body>
 </html>

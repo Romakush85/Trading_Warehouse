@@ -13,6 +13,6 @@ spring:
       name: admin
       password: 12345
   mvc:
-    hiddenmethod:
+    hidden-method:
       filter:
         enabled: true

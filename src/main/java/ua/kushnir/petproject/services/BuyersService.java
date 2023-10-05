@@ -1,6 +1,7 @@
 package ua.kushnir.petproject.services;
 
 import lombok.Data;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.kushnir.petproject.models.contractor.buyer.Buyer;
@@ -14,7 +15,12 @@ import java.util.UUID;
 @Data
 @Transactional(readOnly = true)
 public class BuyersService {
+
     private final BuyersRepository buyersRepository;
+    @Autowired
+    public BuyersService(BuyersRepository buyersRepository) {
+        this.buyersRepository = buyersRepository;
+    }
 
     public List<Buyer> findAll() {
         return buyersRepository.findAll();
@@ -32,6 +38,9 @@ public class BuyersService {
 
     @Transactional
     public void update(UUID id, Buyer updatedBuyer) {
+        Buyer buyerToBeUpdate = findOne(id);
+        updatedBuyer.getContract().setId(buyerToBeUpdate.getContract().getId());
+        updatedBuyer.getContacts().setId(buyerToBeUpdate.getContacts().getId());
         updatedBuyer.setId(id);
         buyersRepository.save(updatedBuyer);
     }
