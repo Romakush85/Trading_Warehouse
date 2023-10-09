@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>New supplier</title>
+</head>
+<body>
+<div layout:fragment="content">
+    <form class="container" th:method="POST" th:action="@{/suppliers}"
+          style="background:white; opacity: 0.6; overflow-y: auto">
+        <h2>Supplier:</h2>
+        <div th:object="${supplier}">
+            <label for="name">Enter name:</label>
+            <input type="text" th:field="*{name}" id="name" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</div>
+            <br>
+            <label for="registrationNumber">Enter registration number:</label>
+            <input type="text" th:field="*{registrationNumber}" id="registrationNumber" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('registrationNumber')}" th:errors="*{registrationNumber}">error</div>
+        </div>
+        <h2>Contract:</h2>
+        <div th:object="${contract}">
+            <label for="number">Enter contract number:</label>
+            <input type="text" th:field="*{number}" id="number" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('number')}" th:errors="*{number}">Number error</div>
+            <br>
+            <label for="date">Enter contract date:</label>
+            <input type="text" th:field="*{date}" id="date" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Date error</div>
+        </div>
+        <h2>Contacts:</h2>
+        <div th:object="${contacts}">
+            <label for="contactPersonName">Enter contact person name:</label>
+            <input type="text" th:field="*{contactPersonName}" id="contactPersonName" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('contactPersonName')}" th:errors="*{contactPersonName}">Contact person error</div>
+            <br>
+            <label for="phoneNumber">Enter phone number:</label>
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}">Phone number error</div>
+            <br>
+            <label for="email">Enter email:</label>
+            <input type="text" th:field="*{email}" id="email" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Email error</div>
+            <br>
+            <label for="address">Enter address:</label>
+            <input type="text" th:field="*{address}" id="address" />
+            <div style="color:darkred" th:if="${#fields.hasErrors('address')}" th:errors="*{address}">Address error</div>
+        </div>
+        <input type="submit" value="Create!"/>
+    </form>
+</div>
+
+</body>
+</html>

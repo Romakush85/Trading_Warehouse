@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Supplier</title>
+</head>
+<body>
+<div layout:fragment="content" style="background:white; opacity: 0.6; overflow-y: auto">
+    <h2>Buyer:</h2>
+    <p th:text="${supplier.getName()}">name</p>
+    <p th:text="${supplier.getRegistrationNumber()}">registration number</p>
+    <h2>Contract:</h2>
+    <p th:text="${supplier.getContract().getNumber()}">contract number</p>
+    <p th:text="${supplier.getContract().getDate()}">contract date</p>
+    <h2>Contacts:</h2>
+    <p th:text="${supplier.getContacts().getContactPersonName()}">contact person</p>
+    <p th:text="${supplier.getContacts().getPhoneNumber()}">phone number</p>
+    <p th:text="${supplier.getContacts().getEmail()}">email</p>
+    <p th:text="${supplier.getContacts().getAddress()}">address</p>
+    <form th:action="@{/suppliers/{id}/edit(id=${supplier.getId()})}" >
+        <input type="submit" value="Edit supplier"/>
+    </form>
+    <form th:method="DELETE" th:action="@{/suppliers/{id}(id=${supplier.getId()})}">
+        <input type="submit" value="Delete supplier"/>
+    </form>
+</div>
+</body>
+</html>

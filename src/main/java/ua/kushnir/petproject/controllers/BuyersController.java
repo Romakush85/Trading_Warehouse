@@ -25,7 +25,9 @@ public class BuyersController {
     private final ContactsService contactsService;
 
     @Autowired
-    public BuyersController(BuyersService buyersService, ContractsService contractsService, ContactsService contactsService) {
+    public BuyersController(BuyersService buyersService,
+                            ContractsService contractsService,
+                            ContactsService contactsService) {
         this.buyersService = buyersService;
         this.contractsService = contractsService;
         this.contactsService = contactsService;
