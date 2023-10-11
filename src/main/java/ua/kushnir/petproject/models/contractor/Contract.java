@@ -2,6 +2,7 @@ package ua.kushnir.petproject.models.contractor;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
@@ -28,6 +29,8 @@ public class Contract {
     private String number;
     @Column(name = "date", nullable = false)
     @NotNull(message = "Date cannot be null")
+    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private Date date;
     @Enumerated(EnumType.STRING)
     @Column(name = "contract_type", nullable = true)

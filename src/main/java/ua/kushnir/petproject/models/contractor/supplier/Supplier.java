@@ -34,4 +34,9 @@ public class Supplier extends Contractor {
     public Supplier() {
         super();
     }
+
+    public void addProduct(Product product) {
+            this.products.add(product);
+    }
+
 }
