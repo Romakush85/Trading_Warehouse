@@ -16,3 +16,6 @@ spring:
     hidden-method:
       filter:
         enabled: true
+  flyway:
+    locations: classpath:db/migration
+    enabled: false

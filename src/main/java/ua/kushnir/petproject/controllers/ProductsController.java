@@ -49,7 +49,7 @@ public class ProductsController {
     @PostMapping()
     public String create(@ModelAttribute("product") Product product,
                          BindingResult bindingResult,
-                         @ModelAttribute("supplier_id") UUID supplierId) {
+                         @ModelAttribute("supplier") UUID supplierId) {
         if (bindingResult.hasErrors())
             return "products/new";
         Supplier supplier = suppliersService.findOne(supplierId);
