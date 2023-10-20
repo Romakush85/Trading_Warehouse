@@ -40,7 +40,7 @@ public class ProductsService {
     @Transactional
     public void update(UUID id, Product updatedProduct) {
         Product productToBeUpdated = findOne(id);
-        updatedProduct.setOrders(productToBeUpdated.getOrders());
+        updatedProduct.setOrderPositions(productToBeUpdated.getOrderPositions());
         updatedProduct.setId(id);
         productsRepository.save(updatedProduct);
     }

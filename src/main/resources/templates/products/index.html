@@ -38,6 +38,16 @@
                     <td th:text="${product.category}"></td>
                     <td th:text="${product.supplier.name}"></td>
                     <td th:text="${product.purchasePrice}"></td>
+                    <td>
+                        <form th:action="@{/products/{id}/edit(id=${product.getId()})}" >
+                            <input type="submit" value="Edit product"/>
+                        </form>
+                    </td>
+                    <td>
+                        <form th:method="DELETE" th:action="@{/products/{id}(id=${product.getId()})}">
+                            <input type="submit" value="Delete product"/>
+                        </form>
+                    </td>
                 </tr>
             </tbody>
         </table>

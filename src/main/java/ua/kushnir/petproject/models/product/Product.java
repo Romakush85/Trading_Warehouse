@@ -3,9 +3,8 @@ package ua.kushnir.petproject.models.product;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
-import org.springframework.format.annotation.DateTimeFormat;
-import ua.kushnir.petproject.models.order.Order;
 import ua.kushnir.petproject.models.contractor.supplier.Supplier;
+import ua.kushnir.petproject.models.order.OrderPosition;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
@@ -13,7 +12,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -32,16 +30,9 @@ public class Product {
     @NotEmpty(message = "Product's title should not be empty")
     @Size(min = 3, max = 30, message = "Title should be between 3 and 30 characters")
     private String title;
-//    @Column(name="shelf_life", nullable = false)
-//    @Temporal(TemporalType.DATE)
-//    @DateTimeFormat(pattern = "dd/MM/yyyy")
-//    private Date shelfLife;
     @Column(name = "purchase_price", nullable = false)
     @Min(value = 0, message = "Price should not be less than 0")
     private BigDecimal purchasePrice;
-//    @Column(name = "sale_price")
-//    @Min(value = 0, message = "Price should not be less than 0")
-//    private BigDecimal salePrice;
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Category should not be empty")
@@ -50,8 +41,8 @@ public class Product {
     @JoinColumn(name="supplier_id", referencedColumnName = "id")
     @NotNull(message="You should choose supplier of product")
     private Supplier supplier;
-    @ManyToMany(mappedBy = "products")
-    private List<Order> orders;
+    @OneToMany(mappedBy = "product")
+    private List<OrderPosition> orderPositions;
 
     @Override
     public boolean equals(Object o) {

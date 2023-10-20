@@ -1,13 +1,16 @@
 package ua.kushnir.petproject.models.order;
 
+import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
 import ua.kushnir.petproject.models.contractor.Contractor;
 import ua.kushnir.petproject.models.product.Product;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+@Data
 @Entity
 @Table(name="orders")
 public class Order {
@@ -22,10 +25,8 @@ public class Order {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "contractor_id", referencedColumnName = "id", nullable = false)
     private Contractor contractor;
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name="order_product",
-    joinColumns = @JoinColumn(name="order_id"), inverseJoinColumns = @JoinColumn(name="product_id"))
-    private Map<Integer, Product> products;
+    @OneToMany(mappedBy="order")
+    private List<OrderPosition> positions;
     @Enumerated(EnumType.STRING)
     private OrderType orderType;
     @Enumerated(EnumType.STRING)

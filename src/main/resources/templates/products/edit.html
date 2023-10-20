@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout.html}">
+<head>
+  <meta charset="UTF-8">
+  <title>Edit product</title>
+</head>
+<body>
+<div layout:fragment="content">
+  <form class="container" th:method="PATCH" th:action="@{/products/{id}(id=${product.getId()})}"
+        style="background:white; opacity: 0.6; overflow-y: auto">
+    <h2>Product:</h2>
+    <div th:object="${product}">
+      <label for="title">Enter product's title:</label>
+      <input type="text" th:field="*{title}" id="title" />
+      <div style="color:darkred" th:if="${#fields.hasErrors('title')}" th:errors="*{title}">Title error</div>
+      <br>
+      <label for="purchasePrice">Enter purchase price:</label>
+      <input type="text" th:field="*{purchasePrice}" id="purchasePrice" />
+      <div style="color:darkred" th:if="${#fields.hasErrors('purchasePrice')}" th:errors="*{purchasePrice}">Price error</div>
+      <br>
+      <label for="category">Choose category:</label>
+      <select  class="form-select" th:field="*{category}" id="category">
+<!--        <option th:value="${category}"-->
+<!--                th:text="${category.name}">-->
+<!--        </option>-->
+        <option th:each="category : ${T(ua.kushnir.petproject.models.product.Category).values()}"
+                th:value="${category}"
+                th:text="${category.name}">
+        </option>
+      </select>
+      <div style="color:darkred" th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category error</div>
+      <br>
+      <label for="supplier_id">Choose supplier:</label>
+      <select  class="form-select" th:field="*{supplier.id}" id="supplier_id">
+        <option th:each="ssupplier : ${suppliers}"
+                th:value="${ssupplier.getId()}"
+                th:text="${ssupplier.getName()}">supplier name
+        </option>
+      </select>
+      <div style="color:darkred" th:if="${#fields.hasErrors('supplier.id')}" th:errors="*{supplier.id}">Supplier error</div>
+      <br>
+    </div>
+
+    <input type="submit" value="Save!"/>
+  </form>
+</div>
+
+</body>
+</html>

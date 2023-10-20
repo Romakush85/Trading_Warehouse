@@ -74,7 +74,7 @@ public class ProductsController {
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("product") @Valid Product product,
                          BindingResult bindingResult,
-                         @ModelAttribute("supplier_id") UUID supplierId,
+                         @ModelAttribute("supplier") UUID supplierId,
                          @PathVariable("id") UUID id) {
         if (bindingResult.hasErrors())
             return "products/edit";
@@ -94,6 +94,5 @@ public class ProductsController {
         productsService.delete(id);
         return "redirect:/products";
     }
-
 
 }
