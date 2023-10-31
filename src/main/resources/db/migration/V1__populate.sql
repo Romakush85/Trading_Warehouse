@@ -11,3 +11,10 @@ insert into contacts (address, contact_person, contractor_id, email, phone_numbe
 values ('Odesa, Ukraine', 'Serhiy Pavlenko', 'dd3dceac-6e6f-11ee-b962-0242ac120002', 'serhiy@pepsi.co', '0934224322', '05bb910c-6e70-11ee-b962-0242ac120002');
 insert into contract (contractor_id, date, number, id)
 values ('dd3dceac-6e6f-11ee-b962-0242ac120002', '10/07/2021', 'SUP-11', '05bb9332-6e70-11ee-b962-0242ac120002');
+
+insert into product (category, purchase_price, supplier_id, title, id)
+values ('BEVERAGE', 12.60, '4e3c27be-76de-496a-bed2-fb2dcb71ab7a', 'Fanta 6x0.33L Glass', 'b60b785c-77f2-11ee-b962-0242ac120002');
+insert into product (category, purchase_price, supplier_id, title, id)
+values ('BEVERAGE', 24.80, '4e3c27be-76de-496a-bed2-fb2dcb71ab7a', 'Sprite 4x2L Pet', 'b60b7e56-77f2-11ee-b962-0242ac120002');
+insert into product (category, purchase_price, supplier_id, title, id)
+values ('BEVERAGE', 24.40, 'dd3dceac-6e6f-11ee-b962-0242ac120002', 'Mirinda 6x1.5L Pet', 'b60b807c-77f2-11ee-b962-0242ac120002');

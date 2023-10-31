@@ -2,6 +2,7 @@ package ua.kushnir.petproject.models.product;
 
 
 import lombok.Data;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
 import ua.kushnir.petproject.models.contractor.supplier.Supplier;
 import ua.kushnir.petproject.models.order.OrderPosition;

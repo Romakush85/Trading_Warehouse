@@ -73,17 +73,15 @@ public class ProductsController {
 
     @PatchMapping("/{id}")
     public String update(@ModelAttribute("product") @Valid Product product,
-                         BindingResult bindingResult,
-                         @ModelAttribute("supplier") UUID supplierId,
+                         BindingResult productResult,
+                         @ModelAttribute("supplier.id") UUID supplierId,
+                         BindingResult supplierResult,
                          @PathVariable("id") UUID id) {
-        if (bindingResult.hasErrors())
+        if (productResult.hasErrors())
+            return "products/edit";
+        if (supplierResult.hasErrors())
             return "products/edit";
         Supplier supplier = suppliersService.findOne(supplierId);
-        if(productsService.isProductAllreadyAdded(supplier, product))
-        {
-            bindingResult.rejectValue("name", "Product with this name already exists for this supplier");
-            return "products/edit";
-        }
         product.setSupplier(supplier);
         productsService.update(id, product);
         return "redirect:/products";

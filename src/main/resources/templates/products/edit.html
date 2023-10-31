@@ -32,11 +32,11 @@
       </select>
       <div style="color:darkred" th:if="${#fields.hasErrors('category')}" th:errors="*{category}">Category error</div>
       <br>
-      <label for="supplier_id">Choose supplier:</label>
-      <select  class="form-select" th:field="*{supplier.id}" id="supplier_id">
+      <label for="supplier.id">Choose supplier:</label>
+      <select  class="form-select" th:field="*{supplier.id}" id="supplier.id">
         <option th:each="ssupplier : ${suppliers}"
-                th:value="${ssupplier.getId()}"
-                th:text="${ssupplier.getName()}">supplier name
+                th:value="${ssupplier.id}"
+                th:text="${ssupplier.name}">supplier name
         </option>
       </select>
       <div style="color:darkred" th:if="${#fields.hasErrors('supplier.id')}" th:errors="*{supplier.id}">Supplier error</div>
