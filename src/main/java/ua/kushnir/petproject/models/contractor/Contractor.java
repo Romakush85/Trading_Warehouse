@@ -23,7 +23,7 @@ public class Contractor {
     private UUID id;
     @Column(name = "name", nullable = false)
     @NotEmpty(message = "Contractor name should not be empty")
-    @Size(min = 3, max = 15, message = "Number should be between 3 and 15 characters")
+    @Size(min = 3, max = 40, message = "Number should be between 3 and 15 characters")
     private String name;
     @Column(name = "reg_number", nullable = false)
     @NotEmpty(message = "Registration number should not be empty")

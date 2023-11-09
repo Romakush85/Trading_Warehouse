@@ -2,10 +2,12 @@ package ua.kushnir.petproject.models.order;
 
 import lombok.Data;
 import org.hibernate.annotations.GenericGenerator;
+import ua.kushnir.petproject.models.Currency;
 import ua.kushnir.petproject.models.product.Product;
 
 import javax.persistence.*;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
@@ -29,6 +31,10 @@ public class OrderPosition {
     @Column(name = "price", nullable = false)
     @Min(value = 0, message = "Price should not be less than 0")
     private BigDecimal price;
+    @Column(name = "currency")
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "Currency should not be empty")
+    private Currency currency;
     @ManyToOne
     @JoinColumn(name="order_id", referencedColumnName = "id")
     private Order order;

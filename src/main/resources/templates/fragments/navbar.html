@@ -10,11 +10,17 @@
             <li class="nav-item">
                 <a class="nav-link active" th:href="@{/warehouse}">Warehouse</a>
             </li>
-            <li class="nav-item" >
-                <a class="nav-link" th:href="@{/deals}">Deals</a>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Orders
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li><a class="dropdown-item" href="/buyers">Purchase orders</a></li>
+                    <li><a class="dropdown-item" href="/suppliers">Sale orders</a></li>
+                </ul>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" role="button" id="dropdownMenuLink2" data-bs-toggle="dropdown" aria-expanded="false">
                     Contractors
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

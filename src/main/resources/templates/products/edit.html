@@ -20,11 +20,18 @@
       <input type="text" th:field="*{purchasePrice}" id="purchasePrice" />
       <div style="color:darkred" th:if="${#fields.hasErrors('purchasePrice')}" th:errors="*{purchasePrice}">Price error</div>
       <br>
+        <label for="currency">Choose currency:</label>
+        <select  class="form-select" th:field="*{currency}" id="currency">
+            <option value="">select currency</option>
+            <option th:each="currency : ${T(ua.kushnir.petproject.models.Currency).values()}"
+                    th:value="${currency}"
+                    th:text="${currency.name}">
+            </option>
+        </select>
+        <div style="color:darkred" th:if="${#fields.hasErrors('currency')}" th:errors="*{currency}">Currency error</div>
+        <br>
       <label for="category">Choose category:</label>
       <select  class="form-select" th:field="*{category}" id="category">
-<!--        <option th:value="${category}"-->
-<!--                th:text="${category.name}">-->
-<!--        </option>-->
         <option th:each="category : ${T(ua.kushnir.petproject.models.product.Category).values()}"
                 th:value="${category}"
                 th:text="${category.name}">

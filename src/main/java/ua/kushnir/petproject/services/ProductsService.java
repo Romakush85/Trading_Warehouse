@@ -53,4 +53,8 @@ public class ProductsService {
     public boolean isProductAllreadyAdded(Supplier supplier, Product product) {
         return supplier.getProducts().contains(product);
     }
+
+    public List<Product> findAllBySupplierId(UUID supplierId) {
+        return productsRepository.findProductsBySupplierId(supplierId);
+    }
 }

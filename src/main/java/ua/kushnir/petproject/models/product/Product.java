@@ -4,6 +4,7 @@ package ua.kushnir.petproject.models.product;
 import lombok.Data;
 import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.GenericGenerator;
+import ua.kushnir.petproject.models.Currency;
 import ua.kushnir.petproject.models.contractor.supplier.Supplier;
 import ua.kushnir.petproject.models.order.OrderPosition;
 
@@ -34,6 +35,10 @@ public class Product {
     @Column(name = "purchase_price", nullable = false)
     @Min(value = 0, message = "Price should not be less than 0")
     private BigDecimal purchasePrice;
+    @Column(name = "currency")
+    @Enumerated(EnumType.STRING)
+    @NotNull(message = "Currency should not be empty")
+    private Currency currency;
     @Column(name = "category")
     @Enumerated(EnumType.STRING)
     @NotNull(message = "Category should not be empty")

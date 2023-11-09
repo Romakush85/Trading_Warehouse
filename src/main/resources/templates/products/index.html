@@ -30,6 +30,7 @@
                     <th scope="col">Category</th>
                     <th scope="col">Supplier</th>
                     <th scope="col">Purchase price</th>
+                    <th scope="col">Currency</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,6 +39,7 @@
                     <td th:text="${product.category}"></td>
                     <td th:text="${product.supplier.name}"></td>
                     <td th:text="${product.purchasePrice}"></td>
+                    <td th:text="${product.currency}"></td>
                     <td>
                         <form th:action="@{/products/{id}/edit(id=${product.getId()})}" >
                             <input type="submit" value="Edit product"/>

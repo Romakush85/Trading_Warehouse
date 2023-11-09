@@ -22,6 +22,10 @@
     <form th:action="@{/suppliers/{id}/edit(id=${supplier.getId()})}" >
         <input type="submit" value="Edit supplier"/>
     </form>
+    <form th:action="@{/orders/new}" th:method="POST">
+        <input type="hidden" name="supplierId" th:value="${supplier.getId()}">
+        <input type="submit" value="Create purchase order"/>
+    </form>
     <form th:method="DELETE" th:action="@{/suppliers/{id}(id=${supplier.getId()})}">
         <input type="submit" value="Delete supplier"/>
     </form>
