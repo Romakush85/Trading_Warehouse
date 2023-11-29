@@ -4,10 +4,7 @@ import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import ua.kushnir.petproject.models.order.CompletionStatus;
-import ua.kushnir.petproject.models.order.Order;
-import ua.kushnir.petproject.models.order.OrderType;
-import ua.kushnir.petproject.models.order.PaymentStatus;
+import ua.kushnir.petproject.models.order.*;
 import ua.kushnir.petproject.repositories.OrdersRepository;
 import ua.kushnir.petproject.repositories.SuppliersRepository;
 
@@ -37,9 +34,9 @@ public class OrdersService {
         return foundOrder.orElse(null);
     }
 
-    @Transactional
-    public void save(Order order) {
-        ordersRepository.save(order);
+    public Order findOneByNumber(String number) {
+        Optional<Order> foundOrder = ordersRepository.findByNumber(number);
+        return foundOrder.orElse(null);
     }
 
     @Transactional
@@ -60,10 +57,12 @@ public class OrdersService {
     public Order createPurchaseOrder(UUID supplierId) {
         Order purchaseOrder = new Order();
         purchaseOrder.setOrderType(OrderType.PurchaseOrder);
+        String number = OrderNumberGenerator.generateOrderNumber();
+        purchaseOrder.setOrderNumber();
         purchaseOrder.setContractor(suppliersService.findOne(supplierId));
         purchaseOrder.setCompletionStatus(CompletionStatus.CREATED);
         purchaseOrder.setPaymentStatus(PaymentStatus.PAYMENT_WAITING);
         ordersRepository.save(purchaseOrder);
-        return purchaseOrder;
+        return findOneByNumber(number);
     }
 }

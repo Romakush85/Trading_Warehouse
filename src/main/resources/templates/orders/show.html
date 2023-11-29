@@ -9,10 +9,15 @@
 <body>
 <div layout:fragment="content" style="background:white; opacity: 0.6; overflow-y: auto">
     <h2>Order:</h2>
+    <p>Date:</p>
     <p th:text="${order.getDate()}">date</p>
+    <p>Number:</p>
     <p th:text="${order.getNumber()}">number</p>
+    <p>Contractor:</p>
     <p th:text="${order.getContractor().getName()}">contractor</p>
+    <p>Completion status:</p>
     <p th:text="${order.getCompletionStatus()}">completion status</p>
+    <p>Payment status:</p>
     <p th:text="${order.getPaymentStatus()}">payment status</p>
 
 </div>
