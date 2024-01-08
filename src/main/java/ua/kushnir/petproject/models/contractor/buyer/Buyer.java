@@ -15,7 +15,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="buyer")
+@Table(name="buyers")
 public class Buyer extends Contractor {
     @OneToMany(mappedBy = "contractor", fetch = FetchType.LAZY)
     private List<Order> saleOrders;

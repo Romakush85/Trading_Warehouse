@@ -16,7 +16,7 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name="supplier")
+@Table(name="suppliers")
 public class Supplier extends Contractor {
     @OneToMany(mappedBy = "supplier", fetch = FetchType.LAZY)
     private List<Product> products;

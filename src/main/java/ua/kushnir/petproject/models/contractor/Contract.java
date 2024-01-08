@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Entity
 @Data
-@Table(name="contract")
+@Table(name="contracts")
 public class Contract {
     @Id
     @GeneratedValue(generator = "UUID")
